@@ -6,8 +6,13 @@ import telebot  # needed to work with telegram bot
 import requests  # needed to request data from openweathermap
 import json  # needed to deserialize response from openweathermap
 
-TOKEN = '6846574480:AAFaLw2TK6MtOZzkY8em5J_llcV7GFQiSjg'  # telegram bot token
-WEATHER_API = '1a2ccaa70571717574b6617387ea900c'  # openweathermap API
+#=============================================================================#
+
+TOKEN = 'ENTER YOUR OWN TELEGRAM TOKEN'  # telegram bot token
+WEATHER_API = 'ENTER YOUR OWN WEATHER API KEY'  # openweathermap API
+
+#=============================================================================#
+
 REQUEST_URL_START = 'https://api.openweathermap.org/data/2.5/weather?q='
 REQUEST_URL_END = f'&appid={WEATHER_API}&units=metric'
 bot = telebot.TeleBot(TOKEN)  # "connecting" to bot
