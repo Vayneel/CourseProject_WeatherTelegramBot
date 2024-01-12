@@ -6,13 +6,8 @@ import telebot  # needed to work with telegram bot
 import requests  # needed to request data from openweathermap
 import json  # needed to deserialize response from openweathermap
 
-#=============================================================================#
-
-TOKEN = 'ENTER YOUR OWN TELEGRAM TOKEN'  # telegram bot token
-WEATHER_API = 'ENTER YOUR OWN WEATHER API KEY'  # openweathermap API
-
-#=============================================================================#
-
+TOKEN = 'YOUR TELEGRAM BOT TOKEN'  # telegram bot token
+WEATHER_API = '1a2ccaa70571717574b6617387ea900c'  # openweathermap API
 REQUEST_URL_START = 'https://api.openweathermap.org/data/2.5/weather?q='
 REQUEST_URL_END = f'&appid={WEATHER_API}&units=metric'
 bot = telebot.TeleBot(TOKEN)  # "connecting" to bot
@@ -22,7 +17,7 @@ city_message = False  # variable to process messages from user about city, they 
 # you can find bot in telegram by https://t.me/vayneel_weather_bot or @vayneel_weather_bot
 
 @bot.message_handler(commands=['start'])
-def start(message) -> None:
+def start(message: telebot.types.Message) -> None:
     """
     /start command handler
     :param message: Information about user's message
@@ -32,7 +27,7 @@ def start(message) -> None:
 
 
 @bot.message_handler(commands=['weather'])
-def weather(message) -> None:
+def weather(message: telebot.types.Message) -> None:
     """
     /weather command handler
     :param message: Information about user's message
@@ -46,7 +41,7 @@ def weather(message) -> None:
 
 
 @bot.callback_query_handler(func=lambda callback: True)
-def bot_callback(callback) -> None:
+def bot_callback(callback: telebot.types.CallbackQuery) -> None:
     """
     Callback handler
     :param callback: Information about user's call
@@ -63,7 +58,7 @@ def bot_callback(callback) -> None:
 
 
 @bot.message_handler(content_types=['text'])
-def user_message(message) -> None:
+def user_message(message: telebot.types.Message) -> None:
     """
     Text messages handler
     :param message: Information about user's message
